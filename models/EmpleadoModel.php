@@ -26,13 +26,14 @@ class EmpleadoModel
     }
 
 
-  
-   
 
-    public function actualizarEmpleado($rut)
+    public function actualizarEmpleado($id,$rut)
     {
         //[email=>valor, nombre=>valor, clave=>value]
-        $stm = Conexion::conector()->prepare("UPDATE empleado SET rut_empleado=$rut WHERE id_empleado = 1 ");
+        $stm = Conexion::conector()->prepare("UPDATE empleado SET rut_empleado=:B WHERE id_empleado = :A ");
+
+        $stm->bindParam(':A',$id);
+        $stm->bindParam(':B',$rut);
 
         return $stm->execute();
     }
@@ -48,12 +49,11 @@ class EmpleadoModel
 
 
 
-
-
-    public function buscarEmpleado($rut)
+    public function buscarEmpleado($id)
     {
       
-        $stm = Conexion::conector()->prepare("UPDATE empleado SET rut_empleado=$rut WHERE id_empleado = 1 ");
+        $stm = Conexion::conector()->prepare("SELECT * FROM empleado WHERE id_empleado = :A ");
+        $stm->bindParam(":A",$id);
 
        
         
@@ -63,20 +63,18 @@ class EmpleadoModel
 
 
   
-   
-
-   
-    
-    
     public function buscarAsignacionRut(){
 
-        $stm = Conexion::conector()->prepare("SELECT u.nombre_usuario ,u.rut_usuario FROM  usuario u   inner join activo a   where u.rut_usuario= '1-1'; 
+        $stm = Conexion::conector()->prepare("SELECT u.nombre_usuario ,u.rut_usuario FROM usuario u inner join activo a where u.rut_usuario= '1-1'; 
         -- INNER JOIN tecnologia t 
         -- ON u.id_usuario=t.id_tecnologia
         -- where u.nombre_usuario='felipe' and t.nombre_tecnologia='TELEFONO';
         
         ");
+
+
         $stm ->execute();
+
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
       
 
