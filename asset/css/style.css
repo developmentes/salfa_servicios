@@ -1,0 +1,176 @@
+*,*::before, *::after{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    background-color: #fff;
+}
+.menu{
+    background-color: red;
+    height: 75px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fff ;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0);
+ 
+}
+
+.logo img{
+    width: 200px;
+    padding-left:20px ;
+}
+
+.menu-items{
+    display: flex;
+    list-style: none;
+    margin-right: 30px;
+}
+
+.menu-items li{
+    border-radius: 3px;
+    margin: 0 7px;
+}
+
+.menu-items li a{
+    padding: 7px 13px;
+    text-decoration: none;
+    font-size: 18px;
+    display:block ;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.menu-items li:hover, li.active{
+    background-color: rgba(0, 0, 0, .3);
+    transition: .4s;
+}
+
+.btn-menu{
+    margin-right: 30px;
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+ul.show{
+    top:65px;
+}
+
+@media screen and (max-width:985px){
+    .logo{
+        font-size: 30px;
+        padding-left: 35px;
+    }
+
+    .menu-items  li a{
+        font-size: 16px;
+    }
+}
+
+.form{
+    width: 90%;
+    background: #24303c;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+}
+
+.form h1{
+    font-size: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+.control{
+  width: 100%;
+  background: #24303c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid red;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: white;
+}
+
+.form .btn {
+    width: 30%;
+    background: red;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    margin-left: 170px;
+    }
+   
+
+@media screen and (max-width:858px){
+    .menu{
+        height: 65px;
+       
+    }
+    .btn-menu{
+        display: inline-flex;
+    }
+    .menu-items{
+        position: fixed;
+        width: 100vw;
+        height: calc(100% - 65px);
+        background: #414141;
+        top: -100vh;
+        text-align: center;
+        transition: .4s;
+        flex-direction: column;
+    }
+    .menu-items li{
+        margin: 30px 0 0 0;
+        line-height: 30px;
+    }
+
+    .menu-items li:hover{
+        background: none;
+    }
+
+    .menu-items li a {
+        font-size: 20px;
+        color: #fff;
+        font-weight: bold;
+    }
+    .menu-items li a:hover {
+        color: red;
+    }
+    .logo {
+        width: 100vw;
+        
+    
+    }
+}
+    @media screen and (max-width:858px) and (orientation: landscape){
+        .menu-items li{
+            margin: 5px 0 0 0;
+        }
+
+        .menu-items{
+            overflow: scroll;
+            height: 100% - 65px;
+        }
+
+    }
+
+
+
+
