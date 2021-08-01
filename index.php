@@ -73,7 +73,7 @@
       <form action="controllers/LoginControllerUser.php" method="POST">
                
                     <label for="rut">Rut</label>
-                     <input id="rut" type="text" name="rut">
+                     <input id="rut" autofocus type="text" name="rut">
 
                        <label for="clave">Clave</label>
                     <input id="clave" type="password" name="clave">

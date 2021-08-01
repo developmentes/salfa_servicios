@@ -32,7 +32,7 @@
                     ?>
                 </p>
               
-      <form action="../controllers/CrearUsuarioControler.php" method="POST">
+      <form action="../controllers/CrearUsuarioController.php" method="POST">
                
                     <label for="rut">Rut</label>
                      <input id="rut" type="text" name="rut" >

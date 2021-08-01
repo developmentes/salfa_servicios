@@ -15,7 +15,12 @@ $cargos = $objCargos->getAllCargos();
 $emp = new EmpleadoModel();
 $editEmpleado = $_GET['id'];
 $emp= $emp->buscarEmpleado($editEmpleado);
+
 $empleados = $emp[0]; 
+
+
+
+
 ?>
 
 
@@ -93,59 +98,56 @@ $empleados = $emp[0];
         ?>
     </p>
 
-
-
     <section class="form">
 
 
         <h1>Actualizar Empleado</h1>
 
-        <form action="../controllers/CrearEmpleadoControler.php" method="POST">
+        <form action="../controllers/ActualizarEmpleadoController.php" method="POST">
             <div class="row">
-                <input id="rut" type="text" name="rut" value="<?=$empleados['rut_empleado']?>" placeholder="Rut empleado ">
+                <input id="rut" autofocus type="text"  name="rut" value="<?=$empleados['rut_empleado']?>" placeholder="Rut empleado  ">
 
-                <input id="nombre" type="text" name="nombre" value="<?=$empleados['nombre_empleado']?>" placeholder="Nombre ">
+                <input id="nombre"   type="text" name="nombre" value="<?=$empleados['nombre_empleado']?>" placeholder="Nombre ">
 
                 <input id="apellido" type="text" name="apellido" value="<?=$empleados['apellido_empleado']?>" placeholder="Apellido ">
 
                 <input id="email" type="text" name="email" value="<?=$empleados['email_empleado']?>" placeholder="Email ">
 
                 <input id="telefono" type="text" name="telefono" value="<?=$empleados['telefono_empleado']?>" placeholder="Telefono ">
+                <input id="cargo" type="text" name="cargo" value="<?=$empleados['cargo_empleado']?>" placeholder="Cargo ">
 
 
 
 
-                <select name="cargo" class="form-select " aria-label="Default select example">
+                <!-- <select name="cargo" class="form-select " aria-label="Default select example">
                     <option selected>Seleccione Cargo</option>
                     <?php foreach ($cargos as $car) { ?>
 
                         <option value="<?= $car["codigo_cargo_empleado"] ?>"><?= $car["tipo_cargo_empleado"] ?></option>
 
                     <?php } ?>
-                </select>
+                </select> -->
 
+                <a id="home" href="../index.php">Home</a>
 
-
-
-
-
-
-
-                <a id="home" href="../../index.html">Home</a>
-
-                <button id="guardar" class="btn">Guardar </button>
+                <button id="actualizar" class="btn">Actualizar </button>
 
             </div>
         </form>
-        </div>
-        </div>
+       
 
         <input id="volver" class="btn" type="submit" value="Volver">
 
     </section>
+<?php
+if(isset($_SESSION['limpiezaInput'])){
+  
+   echo  $_SESSION['limpiezaInput'];
+   unset($_SESSION['limpiezaInput']);
+  
+}
 
-
-    <script src="js/botones-crud.js"></script>
+?>
 </body>
 
 </html>

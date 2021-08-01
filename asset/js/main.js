@@ -8,4 +8,4 @@ addEventListener('DOMContentLoaded', () => {
 	}
 
 
-})
+});

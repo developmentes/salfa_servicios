@@ -14,6 +14,7 @@ $cargos = $objCargos->getAllCargos();
 
 $emp = new EmpleadoModel();
 $empleados = $emp->getAllEmpleados();
+
 ?>
 
 
@@ -31,7 +32,6 @@ $empleados = $emp->getAllEmpleados();
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <script src="../../js/main.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 
@@ -96,10 +96,12 @@ $empleados = $emp->getAllEmpleados();
     <section class="form">
 
 
-        <h1>Asignar Activo</h1>
+        <h1>Crear empleado</h1>
 
-        <form action="../controllers/CrearEmpleadoControler.php" method="POST">
+    <form action="../controllers/CrearEmpleadoController.php" method="POST">
+
             <div class="row">
+
                 <input id="rut" type="text" name="rut" placeholder="Rut empleado ">
 
                 <input id="nombre" type="text" name="nombre" placeholder="Nombre ">
@@ -138,41 +140,42 @@ $empleados = $emp->getAllEmpleados();
 
     </section>
 
-    
+
     <div class="col-md-8">
-                <table class="table">
-                    <thead class="table-success table-striped">
-                        <tr>
-                            <th>Rut</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Email</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
+        
+        <table class="table">
+            <thead class="table-success table-striped">
+                <tr>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
 
-                    <tbody>
-                        <?php
-                        foreach ($empleados as $e) {
-                        ?>
-                            <tr>
-                                <th><?= $e['rut_empleado'] ?></th>
-                                <th><?=$e['nombre_empleado'] ?></th>
-                                <th><?=$e['apellido_empleado'] ?></th>
-                                <th><?=$e['email_empleado']?></th>
-                                <th><a href="./actualizarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-info">Editar</a></th>
-                                <th><a href="./eliminarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-danger">Eliminar</a></th>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+            <tbody>
+                <?php
+                foreach ($empleados as $e) {
+                ?>
+                    <tr>
+                        <th><?= $e['rut_empleado'] ?></th>
+                        <th><?= $e['nombre_empleado'] ?></th>
+                        <th><?= $e['apellido_empleado'] ?></th>
+                        <th><?= $e['email_empleado'] ?></th>
+                        <th><a href="./actualizarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-info">Editar</a></th>
+                        <th><a href="./eliminarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-danger">Eliminar</a></th>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+        
+    </div>
 
 
-    <script src="js/botones-crud.js"></script>
 </body>
 
 </html>

@@ -26,30 +26,30 @@ class EmpleadoModel
     }
 
 
-    public function actualizarEmpleado($nombre, $apellido, $email, $telefono, $cargo)
+    public function actualizarEmpleado($data)
     {
 
 
 
-        $stm = Conexion::conector()->prepare("UPDATE  empleado  SET rut_empleado=:A,nombre_empleado=:B,apellido_empleado=:C,email_empleado=:D,telefono_empleado=:E,cargo_empleado=:F ");
+        $stm = Conexion::conector()->prepare("UPDATE  empleado  SET rut_empleado=:A,nombre_empleado=:B,apellido_empleado=:C,email_empleado=:D,telefono_empleado=:E,cargo_empleado=:F WHERE rut_empleado=:A ");
 
-        $stm->bindParam(':A', $rut);
-        $stm->bindParam(':B', $nombre);
-        $stm->bindParam(':C', $apellido);
-        $stm->bindParam(':D', $email);
-        $stm->bindParam(':E', $telefono);
-        $stm->bindParam(':F', $cargo);
+        $stm->bindParam(':A', $data['rut_empleado']);
+        $stm->bindParam(':B', $data['nombre_empleado']);
+        $stm->bindParam(':C', $data['apellido_empleado']);
+        $stm->bindParam(':D', $data['email_empleado']);
+        $stm->bindParam(':E', $data['telefono_empleado']);
+        $stm->bindParam(':F', $data['cargo_empleado']);
 
 
         return $stm->execute();
     }
 
 
-    public function EliminarEmpleado($rut)
+    public function eliminarEmpleado($id)
     {
         $stm = Conexion::conector()->prepare("DELETE FROM empleado WHERE rut_empleado = :A ");
 
-        $stm->bindParam(':A', $rut);
+        $stm->bindParam(':A', $id);
         return $stm->execute();
     }
 
