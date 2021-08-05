@@ -32,6 +32,7 @@ $empleados = $emp->getAllEmpleados();
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 
@@ -141,41 +142,7 @@ $empleados = $emp->getAllEmpleados();
     </section>
 
 
-    <div class="col-md-8">
-        
-        <table class="table">
-            <thead class="table-success table-striped">
-                <tr>
-                    <th>Rut</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php
-                foreach ($empleados as $e) {
-                ?>
-                    <tr>
-                        <th><?= $e['rut_empleado'] ?></th>
-                        <th><?= $e['nombre_empleado'] ?></th>
-                        <th><?= $e['apellido_empleado'] ?></th>
-                        <th><?= $e['email_empleado'] ?></th>
-                        <th><a href="./actualizarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-info">Editar</a></th>
-                        <th><a href="./eliminarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-danger">Eliminar</a></th>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
-        
-    </div>
-
-
+  
 </body>
 
 </html>

@@ -55,7 +55,7 @@ class CrearEmpleadoController
         $count = $modelo->insertarEmpleado($data);
 
         if ($count == 1) {
-              $chao = $modelo->EliminarEmpleado('5-5');
+
             $_SESSION['creado'] = "Usuario Creado Con Éxito";
 
             //***********  ZONA DE PRUEBAS METODOS EMPLEADO ***//
@@ -65,14 +65,13 @@ class CrearEmpleadoController
 
         //***************************************************** */
 
-             $_SESSION['impresion'] = $chao;
             $this->rut == "";$this->nombre == "";$this->apellido == ""; $this->email == ""; $this->telefono == "";$this->cargo == "";$this->password == "";
         } else {
             $_SESSION['impresion'] = $this->telefono;
             $_SESSION['error'] = "Hubo un error en la base de datos";
         }
 
-        header("Location: ../views/crearEmpleado.php");
+        header("Location: ../views/listarEmpleados.php");
     }
 }
 

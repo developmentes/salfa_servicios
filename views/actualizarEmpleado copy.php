@@ -18,7 +18,12 @@ $emp= $emp->buscarEmpleado($editEmpleado);
 
 $empleados = $emp[0]; 
 
+
+
+
 ?>
+
+
 
 
 
@@ -33,60 +38,30 @@ $empleados = $emp[0];
     <title>Actualizar-Empleado</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <script src="../../js/main.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Salfa</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="menu">
+        <label class="logo"><img src="img/pngegg.png" alt=""></label>
+        <ul class="menu-items">
+            <li class="active"><a href="">Inicio</a></li>
+            <li><a href="">Asignaciones</a></li>
+            <li><a href="">Activos</a></li>
+            <li><a href="">informes</a></li>
+            <li><a href="">Vehiculos</a></li>
+            <li><a href="">Tecnologias</a></li>
+            <li><a href="">Herramientas</a></li>
+        </ul>
+        <span class="btn-menu">
+            <i class="fa fa-bars"></i>
+        </span>
+    </nav>
 
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="../index.php">Home
-            <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../views/AsignarActivo.php">Asignar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./listarEmpleados.php">Empleados</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Informes</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+    <!-- <div id="mesagge"></div> -->
+
+
 
     <p class="red-success">
         <?php

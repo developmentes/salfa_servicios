@@ -31,7 +31,7 @@ ALTER TABLE activo ADD COLUMN  (codigo_cargo_empleado);
 ALTER TABLE activo ADD codigo_cargo_empleado INT(20) NOT NULL;
 ALTER TABLE vehiculo ADD patente_vehiculo VARCHAR(8) NOT NULL;
 ALTER TABLE activo ADD id_cargo_usuario  INT(10) NOT NULL;
-ALTER TABLE activo ADD CONSTRAINT fk_codigo_cargo_empleado FOREIGN KEY (codigo_cargo_empleado) REFERENCES cargo_empleado(codigo_cargo_empleado);
+ALTER TABLE activo  FOREIGN KEY (codigo_cargo_empleado) REFERENCES cargo_empleado(codigo_cargo_empleado);
 ALTER TABLE activo ADD FOREIGN KEY (id_cargo_empleado) REFERENCES cargo_empleado(id_cargo_empleado);
 ALTER TABLE activo ADD FOREIGN KEY (id_cargo_usuario) REFERENCES cargo_empleado(id_cargo_empleado);
 ALTER TABLE activo ADD codigo_cargo_empleado INT(20) NOT NULL;

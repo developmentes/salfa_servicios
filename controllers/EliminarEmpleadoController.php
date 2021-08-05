@@ -39,7 +39,7 @@ class EliminarEmpleadoController
 
         if ($count == 1) {
 
-            $_SESSION['actualizado'] = "Empleado eliminado exitosamente";
+            $_SESSION['eliminado'] = "Empleado eliminado exitosamente";
             $_SESSION['limpiezaInput'] =' <script src="../asset/js/actualizar.js"></script>';
             if(isset($empleado)){unset($empleado);}
 
@@ -55,7 +55,7 @@ class EliminarEmpleadoController
             $_SESSION['error'] = "Hubo un error en la base de datos";
         }
 
-        header("Location: ../views/actualizarEmpleado.php");
+        header("Location: ../views/listarEmpleados.php");
     }
 }
 

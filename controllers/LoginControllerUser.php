@@ -38,7 +38,7 @@ class LoginControllerUser
         // $_SESSION['usuario'] = $array[0];
 
 
-        header("Location: ../views/userAdmin.php");
+        header("Location: ../views/listarEmpleados.php");
     }
 }
 

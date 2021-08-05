@@ -69,7 +69,7 @@ class ActualizarEmpleadoController
             $_SESSION['error'] = "Hubo un error en la base de datos";
         }
 
-        header("Location: ../views/actualizarEmpleado.php");
+        header("Location: ../views/listarEmpleados.php");
     }
 }
 

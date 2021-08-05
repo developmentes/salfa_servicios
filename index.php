@@ -73,10 +73,10 @@
       <form action="controllers/LoginControllerUser.php" method="POST">
                
                     <label for="rut">Rut</label>
-                     <input id="rut" autofocus type="text" name="rut">
+                     <input class="form-control" id="rut" autofocus type="text" name="rut">
 
                        <label for="clave">Clave</label>
-                    <input id="clave" type="password" name="clave">
+                    <input class="form-control" id="clave" type="password" name="clave">
                       
 
                         <button  class="btn blue lighten-2 black-text" Style="box-shadow: 3px 3px 12px hsl(240, 2%, 10%)" >Iniciar Sesion</button>
