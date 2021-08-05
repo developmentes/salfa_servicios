@@ -1,19 +1,16 @@
 <?php
 
-require_once("../models/UsuarioModel.php");
-require_once("../models/EmpleadoModel.php");
+require_once("../../models/vehiculo-models/VehiculoModels.php");
 
-use models\UsuarioModel as UsuarioModel;
-use models\EmpleadoModel as EmpleadoModel;
+use models\VehiculoModels as VehiculoModels;
 
 session_start();
 
-$objCargos = new UsuarioModel();
+$objVehiculo = new VehiculoModels();
 
-$cargos = $objCargos->getAllCargos();
+$vehiculos = $objVehiculo->getAllVehiculos();
 
-$emp = new EmpleadoModel();
-$empleados = $emp->getAllEmpleados();
+
 
 ?>
 
@@ -31,7 +28,7 @@ $empleados = $emp->getAllEmpleados();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -69,7 +66,7 @@ $empleados = $emp->getAllEmpleados();
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Herramienta</a>
             <a class="dropdown-item" href="#">Tecnologia</a>
-            <a class="dropdown-item" href="./vehiculo/listarVehiculos.php">Vehiculos</a>
+            <a class="dropdown-item" href="#">Vehiculos</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
           </div>
@@ -140,32 +137,32 @@ $empleados = $emp->getAllEmpleados();
     <section class="form">
 
 
-        <h1>Crear empleado</h1>
+        <h1> Vehiculos</h1>
 
     
-        <a href="./crearEmpleado.php" class="btn btn-info">Crear</a>
-    <div class="col-md-8">
+        <a href="./crearVehiculo.php" class="btn btn-info">Crear</a>
+    <div class="col-md-10">
         
         <table class="table">
             <thead class="table-success table-striped">
                 <tr>
-                    <th>Rut</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
+                    <th>patente</th>
+                    <th>marca</th>
+                    <th>modelo</th>
+                    <th>stock</th>
                    
                 </tr>
             </thead>
 
             <tbody>
                 <?php
-                foreach ($empleados as $e) {
+                foreach ($vehiculos as $e) {
                 ?>
                     <tr>
-                        <th><?= $e['rut_empleado'] ?></th>
-                        <th><?= $e['nombre_empleado'] ?></th>
-                        <th><?= $e['apellido_empleado'] ?></th>
-                        <th><?= $e['email_empleado'] ?></th>
+                        <th><?= $e['patente_vehiculo'] ?></th>
+                        <th><?= $e['marca_vehiculo'] ?></th>
+                        <th><?= $e['modelo_vehiculo'] ?></th>
+                        <th><?= $e['stock_vehiculo'] ?></th>
                         <th><a href="./actualizarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-info">Editar</a></th>
                         <th><a href="./eliminarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-danger">Eliminar</a></th>
                     </tr>
@@ -178,6 +175,7 @@ $empleados = $emp->getAllEmpleados();
     </div>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,25 +1,21 @@
 <?php
 
-require_once("../models/UsuarioModel.php");
-require_once("../models/EmpleadoModel.php");
+// require_once("../models/UsuarioModel.php");
+// require_once("./models/vehiculo-models/VehiculoModels.php");
 
-use models\UsuarioModel as UsuarioModel;
-use models\EmpleadoModel as EmpleadoModel;
+// use models\VehiculoModels as VehiculoModels;
+// use models\EmpleadoModel as EmpleadoModel;
 
-session_start();
+// session_start();
 
-$objCargos = new UsuarioModel();
+// $objCargos = new VehiculoModels();
 
-$cargos = $objCargos->getAllCargos();
+// $vehiculos = $objCargos->getAllVehiculos();
 
-$emp = new EmpleadoModel();
-$empleados = $emp->getAllEmpleados();
+// $emp = new EmpleadoModel();
+// $empleados = $emp->getAllEmpleados();
 
-?>
-
-
-
-
+// ?>
 
 
 <!DOCTYPE html>
@@ -31,16 +27,12 @@ $empleados = $emp->getAllEmpleados();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body>
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Salfa</a>
@@ -69,7 +61,7 @@ $empleados = $emp->getAllEmpleados();
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Herramienta</a>
             <a class="dropdown-item" href="#">Tecnologia</a>
-            <a class="dropdown-item" href="./vehiculo/listarVehiculos.php">Vehiculos</a>
+            <a class="dropdown-item" href="#">Vehiculos</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
           </div>
@@ -86,7 +78,12 @@ $empleados = $emp->getAllEmpleados();
 <div class="alert alert-success d-flex align-items-center" role="alert">
   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
   <div>
-  
+
+    <!-- <div id="mesagge"></div> -->
+
+
+
+    <p class="red-success">
         <?php
 
         if (isset($_SESSION['creado'])) {
@@ -96,33 +93,19 @@ $empleados = $emp->getAllEmpleados();
             unset($_SESSION['creado']);
         }
         ?>
-    
-  </div>
-</div>
-   
+    </p>
+
     <p class="red-success">
         <?php
 
-        if (isset($_SESSION['actualizado'])) {
-            echo $_SESSION['actualizado'];
-            //$miarr  =  $_SESSION['creado'];
-            //echo var_dump($miarr);
-            unset($_SESSION['actualizado']);
+        if (isset($_SESSION['impresion'])) {
+            //echo $_SESSION['impresion'];
+            $miarr  =  $_SESSION['impresion'];
+            echo var_dump($miarr);
+            unset($_SESSION['impresion']);
         }
         ?>
     </p>
-    <p class="red-success">
-        <?php
-
-        if (isset($_SESSION['eliminado'])) {
-            echo $_SESSION['eliminado'];
-            //$miarr  =  $_SESSION['creado'];
-            //echo var_dump($miarr);
-            unset($_SESSION['eliminado']);
-        }
-        ?>
-    </p>
-
     <p class="error">
         <?php
 
@@ -140,44 +123,38 @@ $empleados = $emp->getAllEmpleados();
     <section class="form">
 
 
-        <h1>Crear empleado</h1>
+        <h1>Crear Vehiculo</h1>
 
-    
-        <a href="./crearEmpleado.php" class="btn btn-info">Crear</a>
-    <div class="col-md-8">
-        
-        <table class="table">
-            <thead class="table-success table-striped">
-                <tr>
-                    <th>Rut</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                   
-                </tr>
-            </thead>
+    <form class="form container col-6" action="../../controllers/vehiculo/crearVehiculoController.php" method="POST">
 
-            <tbody>
-                <?php
-                foreach ($empleados as $e) {
-                ?>
-                    <tr>
-                        <th><?= $e['rut_empleado'] ?></th>
-                        <th><?= $e['nombre_empleado'] ?></th>
-                        <th><?= $e['apellido_empleado'] ?></th>
-                        <th><?= $e['email_empleado'] ?></th>
-                        <th><a href="./actualizarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-info">Editar</a></th>
-                        <th><a href="./eliminarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-danger">Eliminar</a></th>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
-        
-    </div>
+            <div class="row">
 
-    </div>
+                <input class="form-control col-6 mb-3" id="patente" type="text" name="patente" placeholder="Patente vehiculo ">
+
+                <input class="form-control mb-3" id="marca" type="text" name="marca" placeholder="Marca ">
+
+                <input class="form-control mb-3" id="modelo" type="text" name="modelo" placeholder="Modelo ">
+
+                <input class="form-control mb-3" id="stock" type="text" name="stock" placeholder="Stock ">
+
+                <textarea name="descripcion" id="descripcion" cols="20" rows="5">Descripcion</textarea>
+
+
+                <a id="home" href="../../../salfa-corp/index.php">Home</a>
+
+                <button id="guardar" class="btn btn-primary mb-2">Guardar </button>
+
+            </div>
+        </form>
+        </div>
+        </div>
+
+        <input id="volver" class="btn" type="submit" value="Volver">
+
+    </section>
+
+
+  
 </body>
 
 </html>
