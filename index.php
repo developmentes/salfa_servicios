@@ -3,34 +3,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,7 +12,7 @@
     <link href="./asset/css/style.css" rel="stylesheet">
     <link href="./asset/css/style_form.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-image: url(./asset/img/job-people.jpg);">
 
 <div class="opa">
     <div class="login-box">

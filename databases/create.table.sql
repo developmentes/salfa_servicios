@@ -101,16 +101,17 @@ create table if not exists activo (
     id_herramienta int(10) null,
     fecha_entrega DATE,
     fecha_devolucion DATE,
+    id_empleado int(10) null,
     descripcion_activo varchar(30) not null,
-    id_usuario int(10) null,
     primary key(id_activo),
     FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id_vehiculo),
     FOREIGN KEY (id_tecnologia) REFERENCES tecnologia(id_tecnologia),
     FOREIGN KEY (id_herramienta) REFERENCES herramienta(id_herramienta),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado)
 
 
 );
+alter table activo modify fecha_devolucion varchar(8);
 
 alter table activo add foreign key (usuario_id) REFERENCES usuario(id_usuario);
 alter table activo drop column id_empleado;

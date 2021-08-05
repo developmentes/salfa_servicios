@@ -17,11 +17,6 @@ $empleados = $emp->getAllEmpleados();
 
 ?>
 
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,23 +32,50 @@ $empleados = $emp->getAllEmpleados();
 </head>
 
 <body>
-    <nav class="menu">
-        <label class="logo"><img src="img/pngegg.png" alt=""></label>
-        <ul class="menu-items">
-            <li class="active"><a href="">Inicio</a></li>
-            <li><a href="">Asignaciones</a></li>
-            <li><a href="">Activos</a></li>
-            <li><a href="">informes</a></li>
-            <li><a href="">Vehiculos</a></li>
-            <li><a href="">Tecnologias</a></li>
-            <li><a href="">Herramientas</a></li>
-        </ul>
-        <span class="btn-menu">
-            <i class="fa fa-bars"></i>
-        </span>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Salfa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../index.php">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../views/AsignarActivo.php">Activo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./listarEmpleados.php">Empleados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Informes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Asignar</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Herramienta</a>
+                            <a class="dropdown-item" href="#">Tecnologia</a>
+                            <a class="dropdown-item" href="#">Vehiculos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
     </nav>
 
-    <!-- <div id="mesagge"></div> -->
+
 
 
 
@@ -94,55 +116,61 @@ $empleados = $emp->getAllEmpleados();
 
 
 
-    <section class="form">
+        
+                <section class="container" >
 
 
-        <h1>Crear empleado</h1>
+                    <h1>Crear empleado</h1>
 
-    <form action="../controllers/CrearEmpleadoController.php" method="POST">
+                    <form class="form" action="../controllers/CrearEmpleadoController.php" method="POST">
 
-            <div class="row">
+                       
 
-                <input id="rut" type="text" name="rut" placeholder="Rut empleado ">
-
-                <input id="nombre" type="text" name="nombre" placeholder="Nombre ">
-
-                <input id="apellido" type="text" name="apellido" placeholder="Apellido ">
-
-                <input id="email" type="text" name="email" placeholder="Email ">
-
-                <input id="telefono" type="text" name="telefono" placeholder="Telefono ">
-
-
-
-
-                <select name="cargo" class="form-select " aria-label="Default select example">
-                    <option selected>Seleccione Cargo</option>
-                    <?php foreach ($cargos as $car) { ?>
-
-                        <option value="<?= $car["codigo_cargo_empleado"] ?>"><?= $car["tipo_cargo_empleado"] ?></option>
-                    <?php } ?>
-                </select>
-
-
+                            <!-- <label for="patente">Patente vehiculo</label> -->
+                            <div class="form-group">
+                                <input class="form-control  mb-3" id="rut" type="text" name="rut" placeholder="Rut empleado ">
+                            </div>
+                            <div class="form-group">
+                                <!-- <label for="patente">Patente vehiculo</label> -->
+                                <input class="form-control mb-3" id="nombre" type="text" name="nombre" placeholder="Nombre ">
+                            </div>
+                            <div class="form-group">
+                                <!-- <label for="patente">Patente vehiculo</label> -->
+                                <input class="form-control mb-3" id="apellido" type="text" name="apellido" placeholder="Apellido ">
+                            </div>
+                            <div class="form-group">
+                                <!-- <label for="patente">Patente vehiculo</label> -->
+                                <input class="form-control mb-3" id="email" type="text" name="email" placeholder="Email ">
+                            </div>
+                            <div class="form-group">
+                                <!-- <label for="patente">Patente vehiculo</label> -->
+                                <input class="form-control mb-3" id="telefono" type="text" name="telefono" placeholder="Telefono ">
+                            </div>
 
 
 
-                <a id="home" href="../../index.html">Home</a>
+                            <div class="form-group">
+                                <select name="cargo" class="form-select " aria-label="Default select example">
+                                    <option selected>Seleccione Cargo</option>
+                                    <?php foreach ($cargos as $car) { ?>
 
-                <button id="guardar" class="btn">Guardar </button>
+                                        <option value="<?= $car["codigo_cargo_empleado"] ?>"><?= $car["tipo_cargo_empleado"] ?></option>
+                                    <?php } ?>
+                                </select>
 
-            </div>
-        </form>
-        </div>
-        </div>
-
-        <input id="volver" class="btn" type="submit" value="Volver">
-
-    </section>
+                            </div>
 
 
-  
+
+                            <a id="home" href="../../index.html">Home</a>
+                                   
+                         
+                    </form>
+
+                </section>
+
+    
+
 </body>
 
 </html>

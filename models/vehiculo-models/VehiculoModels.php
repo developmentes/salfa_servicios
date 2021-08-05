@@ -24,6 +24,19 @@ class VehiculoModels
 
         return $stm->execute();
     }
+    public function asignarVehiculo($data)
+    {
+        $stm = Conexion::conector()->prepare("INSERT INTO activo (id_vehiculo,fecha_entrega,id_empleado,descripcion_activo) 
+        VALUES(:A,:B,:C,:D)");
+
+        $stm->bindParam(':A', $data['id_vehiculo']);
+        $stm->bindParam(':B', $data['fecha_entrega']);
+        $stm->bindParam(':C', $data['id_empleado']);
+        $stm->bindParam(':D', $data['descripcion_activo']);
+
+
+        return $stm->execute(); //es solo el execute porque no ocupamos los valores que nos devuelve el PDO
+    }
 
 
     public function actualizarVehiculo($data)
@@ -66,7 +79,7 @@ class VehiculoModels
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
-
+    
 
 
     public function buscarAsignacionRut()
@@ -85,12 +98,11 @@ class VehiculoModels
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function getAllVehiculos(){
+    public function getAllVehiculos()
+    {
 
         $stm = Conexion::conector()->prepare("SELECT * FROM vehiculo");
-        $stm ->execute();
+        $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
-
-
     }
 }

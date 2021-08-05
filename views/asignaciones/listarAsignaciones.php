@@ -1,16 +1,19 @@
 <?php
 
-require_once("../../models/vehiculo-models/VehiculoModels.php");
+require_once("../../models/UsuarioModel.php");
+require_once("../../models/EmpleadoModel.php");
 
-use models\VehiculoModels as VehiculoModels;
+use models\UsuarioModel as UsuarioModel;
+use models\EmpleadoModel as EmpleadoModel;
 
 session_start();
 
-$objVehiculo = new VehiculoModels();
+$objCargos = new UsuarioModel();
 
-$vehiculos = $objVehiculo->getAllVehiculos();
+$cargos = $objCargos->getAllCargos();
 
-
+$emp = new EmpleadoModel();
+$empleados = $emp->getAllEmpleados();
 
 ?>
 
@@ -28,7 +31,7 @@ $vehiculos = $objVehiculo->getAllVehiculos();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -66,7 +69,7 @@ $vehiculos = $objVehiculo->getAllVehiculos();
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Herramienta</a>
             <a class="dropdown-item" href="#">Tecnologia</a>
-            <a class="dropdown-item" href="#">Vehiculos</a>
+            <a class="dropdown-item" href="./vehiculo/listarVehiculos.php">Vehiculos</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
           </div>
@@ -80,9 +83,9 @@ $vehiculos = $objVehiculo->getAllVehiculos();
   </div>
 </nav>
 <div class="container  pt-3">
-<div class="alert alert-success d-flex align-items-center" role="alert">
+
   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-  <div>
+  <p>
   
         <?php
 
@@ -94,8 +97,8 @@ $vehiculos = $objVehiculo->getAllVehiculos();
         }
         ?>
     
-  </div>
-</div>
+    </p>
+
    
     <p class="red-success">
         <?php
@@ -114,7 +117,7 @@ $vehiculos = $objVehiculo->getAllVehiculos();
         if (isset($_SESSION['eliminado'])) {
             echo $_SESSION['eliminado'];
             //$miarr  =  $_SESSION['creado'];
-            //echo var_dump($miarr);
+            echo var_dump($_SESSION['eliminado']);
             unset($_SESSION['eliminado']);
         }
         ?>
@@ -125,8 +128,8 @@ $vehiculos = $objVehiculo->getAllVehiculos();
 
         if (isset($_SESSION['error'])) {
             echo $_SESSION['error'];
-            // $miarr  =  $_SESSION['error'];
-            // echo var_dump($miarr);
+             $miarr  =  $_SESSION['error'];
+             echo var_dump($miarr);
             unset($_SESSION['error']);
         }
         ?>
@@ -137,38 +140,34 @@ $vehiculos = $objVehiculo->getAllVehiculos();
     <section class="form">
 
 
-        <h1> Vehiculos</h1>
+        <h1>Crear empleado</h1>
 
     
-        <a href="./crearVehiculo.php" class="btn btn-info">Crear</a>
-    <div class="col-md-10">
+        <a href="./crearEmpleado.php" class="btn btn-info">Crear</a>
+    <div class="col-md-8">
         
         <table class="table">
             <thead class="table-success table-striped">
                 <tr>
-                    <th>patente</th>
-                    <th>marca</th>
-                    <th>modelo</th>
-                    <th>stock</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
                    
                 </tr>
             </thead>
 
             <tbody>
                 <?php
-                foreach ($vehiculos as $e) {
+                foreach ($empleados as $e) {
                 ?>
                     <tr>
-                        <th><?= $e['patente_vehiculo'] ?></th>
-                        <th><?= $e['marca_vehiculo'] ?></th>
-                        <th><?= $e['modelo_vehiculo'] ?></th>
-                        <th><?= $e['stock_vehiculo'] ?></th>
-                        <th><a href="./actualizarVehiculo.php?id=<?= $e['id_vehiculo'] ?>" class="btn btn-info">Editar</a></th>
-                        <th><a href="./eliminarVehiculo.php?id=<?= $e['id_vehiculo'] ?>" class="btn btn-danger">Eliminar</a></th>
-                        <th><a href="./asignarVehiculo.php?id=<?= $e['id_vehiculo'] ?>" class="btn btn-warning">Asignar</a></th>
+                        <th><?= $e['rut_empleado'] ?></th>
+                        <th><?= $e['nombre_empleado'] ?></th>
+                        <th><?= $e['apellido_empleado'] ?></th>
+                        <th><?= $e['email_empleado'] ?></th>
+                        <th><a href="./actualizarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-info">Editar</a></th>
+                        <th><a href="./eliminarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-danger">Eliminar</a></th>
                     </tr>
                 <?php
                 }
@@ -179,8 +178,6 @@ $vehiculos = $objVehiculo->getAllVehiculos();
     </div>
 
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script>$().alert('close')</script>
 </body>
 
 </html>

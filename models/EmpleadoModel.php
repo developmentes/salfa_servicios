@@ -67,6 +67,18 @@ class EmpleadoModel
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function buscarEmpleadoRut($rut)
+    {
+
+        $stm = Conexion::conector()->prepare("SELECT * FROM empleado WHERE rut_empleado = :A ");
+        $stm->bindParam(":A", $rut);
+
+
+
+
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 
 
 

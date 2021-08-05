@@ -56,7 +56,12 @@ class CrearEmpleadoController
 
         if ($count == 1) {
 
-            $_SESSION['creado'] = "Usuario Creado Con Éxito";
+            $_SESSION['creado'] =  '<div class="alert alert-success data-dismiss="alert" aria-label="Close" role="alert">
+            <strong>Empleado creado con exito</strong> success.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>';
 
             //***********  ZONA DE PRUEBAS METODOS EMPLEADO ***//
 

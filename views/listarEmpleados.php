@@ -35,10 +35,10 @@ $empleados = $emp->getAllEmpleados();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../css/style.css">
+    <!-- <link rel="stylesheet" href="../../css/style.css"> -->
 </head>
 
-<body>
+<body style="background-image: url(../asset/img/job-people.jpg);">
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -82,23 +82,21 @@ $empleados = $emp->getAllEmpleados();
     </div>
   </div>
 </nav>
-<div class="container  pt-3">
-<div class="alert alert-success d-flex align-items-center" role="alert">
-  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-  <div>
-  
-        <?php
 
-        if (isset($_SESSION['creado'])) {
-            echo $_SESSION['creado'];
-            //$miarr  =  $_SESSION['creado'];
-            //echo var_dump($miarr);
-            unset($_SESSION['creado']);
-        }
-        ?>
+
+        
+
+     
+<?php if (isset($_SESSION['creado'])) {
+echo $_SESSION['creado'];
+unset ($_SESSION['creado']);
+
+}?>
+
+        
     
-  </div>
-</div>
+
+
    
     <p class="red-success">
         <?php
@@ -127,7 +125,7 @@ $empleados = $emp->getAllEmpleados();
         <?php
 
         if (isset($_SESSION['error'])) {
-            echo $_SESSION['error'];
+            echo print_r($_SESSION['error']);
             // $miarr  =  $_SESSION['error'];
             // echo var_dump($miarr);
             unset($_SESSION['error']);
@@ -137,27 +135,33 @@ $empleados = $emp->getAllEmpleados();
 
 
 
-    <section class="form">
+    <section style="background-color: slategrey; opacity: 0.9;height: 80vh;margin-top: 50px;" >
 
 
-        <h1>Crear empleado</h1>
+      
 
     
-        <a href="./crearEmpleado.php" class="btn btn-info">Crear</a>
-    <div class="col-md-8">
-        
+       
+    <div class="col-md-8 container p-3">
+        <div class="bg-primary p-2 text-dark ">
+        <h1>PERSONAL SALFA</h1>
+         <a href="./crearEmpleado.php" class="btn btn-info btn-outline-success col-4 mb-3">Crear</a>
+         </div>
         <table class="table">
+
             <thead class="table-success table-striped">
                 <tr>
                     <th>Rut</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
+                    <th></th>
+                    <th></th>
                    
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody style="background-color: snow;">
                 <?php
                 foreach ($empleados as $e) {
                 ?>
