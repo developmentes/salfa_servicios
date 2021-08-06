@@ -84,60 +84,60 @@ $empleados = $emp->getAllEmpleados();
 </nav>
 
 
-        
-
-     
-<?php if (isset($_SESSION['creado'])) {
-echo $_SESSION['creado'];
-unset ($_SESSION['creado']);
-
-}?>
-
-        
-    
-
-
-   
-    <p class="red-success">
-        <?php
-
-        if (isset($_SESSION['actualizado'])) {
-            echo $_SESSION['actualizado'];
-            //$miarr  =  $_SESSION['creado'];
-            //echo var_dump($miarr);
-            unset($_SESSION['actualizado']);
-        }
-        ?>
-    </p>
-    <p class="red-success">
-        <?php
-
-        if (isset($_SESSION['eliminado'])) {
-            echo $_SESSION['eliminado'];
-            //$miarr  =  $_SESSION['creado'];
-            //echo var_dump($miarr);
-            unset($_SESSION['eliminado']);
-        }
-        ?>
-    </p>
-
-    <p class="error">
-        <?php
-
-        if (isset($_SESSION['error'])) {
-            echo print_r($_SESSION['error']);
-            // $miarr  =  $_SESSION['error'];
-            // echo var_dump($miarr);
-            unset($_SESSION['error']);
-        }
-        ?>
-    </p>
-
-
 
     <section style="background-color: slategrey; opacity: 0.9;height: 80vh;margin-top: 50px;" >
 
 
+
+        
+    <p class="red-success">
+     
+     <?php if (isset($_SESSION['creado'])) {
+     echo $_SESSION['creado'];
+     unset ($_SESSION['creado']);
+     
+     }?>
+     
+     </p>   
+         
+     
+     
+        
+         <p class="red-success">
+             <?php
+     
+             if (isset($_SESSION['actualizado'])) {
+                 echo $_SESSION['actualizado'];
+                 //$miarr  =  $_SESSION['creado'];
+                 echo var_dump($_SESSION['actualizado']);
+                 unset($_SESSION['actualizado']);
+             }
+             ?>
+         </p>
+         <p class="red-success">
+             <?php
+     
+             if (isset($_SESSION['eliminado'])) {
+                 echo $_SESSION['eliminado'];
+                 //$miarr  =  $_SESSION['creado'];
+                 //echo var_dump($miarr);
+                 unset($_SESSION['eliminado']);
+             }
+             ?>
+         </p>
+     
+         <p class="error">
+             <?php
+     
+             if (isset($_SESSION['error'])) {
+                 echo print_r($_SESSION['error']);
+                 // $miarr  =  $_SESSION['error'];
+                 // echo var_dump($miarr);
+                 unset($_SESSION['error']);
+             }
+             ?>
+         </p>
+     
       
 
     
@@ -171,7 +171,7 @@ unset ($_SESSION['creado']);
                         <th><?= $e['apellido_empleado'] ?></th>
                         <th><?= $e['email_empleado'] ?></th>
                         <th><a href="./actualizarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-info">Editar</a></th>
-                        <th><a href="./eliminarEmpleado.php?id=<?= $e['id_empleado'] ?>" class="btn btn-danger">Eliminar</a></th>
+                        <th><a href="../controllers/EliminarEmpleadoController.php?id=<?= $e['id_empleado'] ?>" class="btn btn-danger">Eliminar</a></th>
                     </tr>
                 <?php
                 }

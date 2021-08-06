@@ -28,22 +28,14 @@ $allVehiculos = $objVehiculo->getAllVehiculos();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar-Empleado</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <script src="../../js/main.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body style="background-image: url(../../asset/img/job-people.jpg);">    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Salfa</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,48 +112,52 @@ $allVehiculos = $objVehiculo->getAllVehiculos();
         ?>
     </p>
 
-    <section class="form">
+    <section style="background-color: slategrey; opacity: 0.9;height: 80vh;margin-top: 50px;">
 
+        <div class="col-md-12  p-3">
 
-        <h1>Actualizar Empleado</h1>
-
-        <form action="../../controllers/vehiculo/ActualizarVehiculoController.php" method="POST">
             <div class="row">
-                <input id="patente" autofocus type="text" name="patente" value="<?= $vehiculo['patente_vehiculo'] ?>">
 
-                <select name="marca" class="form-select " aria-label="Default select example">
-                    <option selected>Seleccione marca</option>
-                    <?php foreach ($allVehiculos as $car) { ?>
+                <form  class="container col-6" action="../../controllers/vehiculo/ActualizarVehiculoController.php" method="POST">
 
-                        <option value="<?= $car["marca_vehiculo"] ?>"><?= $car["marca_vehiculo"] ?></option>
+                    <h1>Actualizar Vehiculo</h1>
 
-                    <?php } ?>
-                </select>
-                <select name="modelo" class="form-select " aria-label="Default select example">
-                    <option selected>Seleccione modelo</option>
-                    <?php foreach ($allVehiculos as $car) { ?>
+                    <div class="form-group">
+                    <label for="patente">Patente </label>
+                        <input class="form-control mb-3" id="patente" autofocus type="text" name="patente" value="<?= $vehiculo['patente_vehiculo'] ?>">
 
-                        <option value="<?= $car["modelo_vehiculo"] ?>"><?= $car["modelo_vehiculo"] ?></option>
+                        </div>
 
-                    <?php } ?>
-                </select>
-
-                <input id="stock" type="text" name="stock" value="<?= $vehiculo['stock_vehiculo'] ?>">
-
-                <input id="descripcion" type="text" name="descripcion" value="<?= $vehiculo['descripcion_vehiculo'] ?>">
+                        <div class="form-group">
+                            <label for="patente">Marca </label>
+                            <input class="form-control mb-3 id="patente" autofocus type="text" name="marca" value="<?= $vehiculo['marca_vehiculo'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="patente">Modelo</label>
+                            <input class="form-control mb-3 id="patente" autofocus type="text" name="modelo" value="<?= $vehiculo['modelo_vehiculo'] ?>">
+                        </div>
 
 
+                        <div class="form-group">
+                            <label for="patente">Stock</label>
+                            <input class="form-control mb-3 id="stock" type="text" name="stock" value="<?= $vehiculo['stock_vehiculo'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="patente">Descripcion</label>
+                            <input class="form-control mb-3 id="descripcion" type="text" name="descripcion" value="<?= $vehiculo['descripcion_vehiculo'] ?>">
+                        </div>
 
 
 
 
-                <button id="actualizar" class="btn">Actualizar </button>
+                        <div class="form-group">
+                            <button class="btn btn-info" id="actualizar" name="idVehiculo"  value="<?= $vehiculo['id_vehiculo'] ?>" class="btn">Actualizar </button>
+                        </div>
+
+                </form>
 
             </div>
-        </form>
-
-
-
+        </div>
     </section>
     <?php
     if (isset($_SESSION['limpiezaInput'])) {
@@ -171,6 +167,10 @@ $allVehiculos = $objVehiculo->getAllVehiculos();
     }
 
     ?>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

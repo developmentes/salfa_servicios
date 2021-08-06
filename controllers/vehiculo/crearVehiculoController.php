@@ -38,7 +38,7 @@ class CrearEmpleadoController
         if ($this->patente == "" || $this->marca == "" || $this->modelo == "" || $this->stock == "" || $this->descripcion == "" ) {
             $_SESSION['error'] = "Complete la informacion";
             $_SESSION['impresion'] = $this->rut;
-            header("Location: ../../views/vehiculo/listarVehiculos.php");
+            header("Location: ../../views/vehiculo/crearVehiculo.php");
             return;
         }
         

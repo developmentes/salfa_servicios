@@ -117,7 +117,7 @@ $empleados = $emp->getAllEmpleados();
 
 
         
-                <section class="container" >
+                <section class="container outline-success" >
 
 
                     <h1>Crear empleado</h1>
@@ -159,6 +159,8 @@ $empleados = $emp->getAllEmpleados();
                                 </select>
 
                             </div>
+
+                            <button>crear</button>
 
 
 

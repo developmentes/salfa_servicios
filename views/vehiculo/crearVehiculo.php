@@ -126,7 +126,17 @@
             }
             ?>
         </p>
-        <p class="error">
+      
+    </div>
+
+    <div class="degradado">
+
+        <div class="container">
+       
+           
+                <section class="card bg-img " style="height:80vh; margin:0 auto;">
+
+                <p class="error">
             <?php
 
             if (isset($_SESSION['error'])) {
@@ -137,21 +147,13 @@
             }
             ?>
         </p>
-    </div>
-
-    <div class="degradado">
-
-        <div class="container">
-           
-                <section class="card bg-img " style="width: 80%;height:80vh; margin:0 auto;">
-
-
 
 
                         <div class="row mt-3" >
                             <form class="form container col-6" action="../../controllers/vehiculo/crearVehiculoController.php" method="POST">
                             <div>
                                 <h1>Crear Vehiculo</h1>
+            
                                 </div>
                                 <div>
                                     <input class="form-control col-12-lg mb-3" id="patente" type="text" name="patente" placeholder="Patente vehiculo ">
@@ -172,8 +174,19 @@
                                 <div style="background-color: white;">
                                     <button id="guardar" class="btn btn-success mb-2 btn-block ">Guardar</button>
                                 </div>
+                               
 
+            <p class="error" style="background-color: red;color:white;">
+                <?php
 
+            if (isset($_SESSION['error'])) {
+                echo $_SESSION['error'];
+                // $miarr  =  $_SESSION['error'];
+                // echo var_dump($miarr);
+                unset($_SESSION['error']);
+            }
+                ?>
+            </p>
 
                             </form>
 

@@ -39,12 +39,12 @@ class VehiculoModels
     }
 
 
-    public function actualizarVehiculo($data)
+    public function actualizarVehiculo($data,$id)
     {
 
 
 
-        $stm = Conexion::conector()->prepare("UPDATE  vehiculo  SET patente_vehiculo=:A,marca_vehiculo=:B,modelo_vehiculo=:C,stock_vehiculo=:D,descripcion_vehiculo=:E WHERE patente_vehiculo=:A ");
+        $stm = Conexion::conector()->prepare("UPDATE  vehiculo  SET patente_vehiculo=:A,marca_vehiculo=:B,modelo_vehiculo=:C,stock_vehiculo=:D,descripcion_vehiculo=:E WHERE id_vehiculo=$id");
 
         $stm->bindParam(':A', $data['patente_vehiculo']);
         $stm->bindParam(':B', $data['marca_vehiculo']);

@@ -47,7 +47,7 @@ class EmpleadoModel
 
     public function eliminarEmpleado($id)
     {
-        $stm = Conexion::conector()->prepare("DELETE FROM empleado WHERE rut_empleado = :A ");
+        $stm = Conexion::conector()->prepare("DELETE FROM empleado WHERE id_empleado = :A ");
 
         $stm->bindParam(':A', $id);
         return $stm->execute();

@@ -20,8 +20,6 @@
     
     
               
-    
-              
                 <p class="green-success">
                     <?php
 
