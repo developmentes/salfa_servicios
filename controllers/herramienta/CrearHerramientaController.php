@@ -6,9 +6,7 @@ use models\EmpleadoModel as EmpleadoModel;
 
 require_once("../models/EmpleadoModel.php");
 
-
-
-class ActualizarEmpleadoController
+class CrearEmpleadoController
 {
     public $rut;
     public $nombre;
@@ -33,12 +31,17 @@ class ActualizarEmpleadoController
        
     }
 
-    public function updateEmploye()
+    public function registrarUsuario()
     {
 
         $modelo = new EmpleadoModel();
         session_start();
-     
+        if ($this->rut == "" || $this->nombre == "" || $this->apellido == "" || $this->email == "" || $this->telefono == "" || $this->cargo == "" ) {
+            $_SESSION['error'] = "Complete la informacion";
+            $_SESSION['impresion'] = $this->rut;
+            header("Location: ../views/crearEmpleado.php");
+            return;
+        }
         
         $data =['rut_empleado' => $_POST['rut'],
                 'nombre_empleado' => $_POST['nombre'],
@@ -49,21 +52,25 @@ class ActualizarEmpleadoController
 
 
 
-        $count = $modelo->actualizarEmpleado($data);
+        $count = $modelo->insertarEmpleado($data);
 
         if ($count == 1) {
 
-            $_SESSION['actualizado'] = "Empleado actualizado exitosamente";
-            $_SESSION['limpiezaInput'] =' <script src="../asset/js/actualizar.js"></script>';
-            if(isset($empleado)){unset($empleado);}
+            $_SESSION['creado'] =  '<div class="alert alert-success data-dismiss="alert" aria-label="Close" role="alert">
+            <strong>Empleado creado con exito</strong> success.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>';
 
-            if(isset($editEmpleado)){unset($editEmpleado);}
-            
-            
-                
-           
+            //***********  ZONA DE PRUEBAS METODOS EMPLEADO ***//
 
+            //$modelo->actualizarEmpleado(5);
+          
 
+        //***************************************************** */
+
+            $this->rut == "";$this->nombre == "";$this->apellido == ""; $this->email == ""; $this->telefono == "";$this->cargo == "";$this->password == "";
         } else {
             $_SESSION['impresion'] = $this->telefono;
             $_SESSION['error'] = "Hubo un error en la base de datos";
@@ -73,7 +80,7 @@ class ActualizarEmpleadoController
     }
 }
 
-$obj = new ActualizarEmpleadoController();
-$obj->updateEmploye();
+$obj = new CrearEmpleadoController();
+$obj->registrarUsuario();
 
 

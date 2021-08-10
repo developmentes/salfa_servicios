@@ -31,7 +31,7 @@ $empleados = $emp->getAllEmpleados();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -67,7 +67,7 @@ $empleados = $emp->getAllEmpleados();
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Asignar</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Herramienta</a>
+            <a class="dropdown-item" href="./herramienta/listarHerramienta.php">Herramienta</a>
             <a class="dropdown-item" href="#">Tecnologia</a>
             <a class="dropdown-item" href="./vehiculo/listarVehiculos.php">Vehiculos</a>
             <div class="dropdown-divider"></div>
@@ -125,20 +125,18 @@ $empleados = $emp->getAllEmpleados();
              }
              ?>
          </p>
-     
-         <p class="error">
+         <p class="red-success">
              <?php
      
-             if (isset($_SESSION['error'])) {
-                 echo print_r($_SESSION['error']);
-                 // $miarr  =  $_SESSION['error'];
-                 // echo var_dump($miarr);
-                 unset($_SESSION['error']);
+             if (isset($_SESSION['errorDb'])) {
+                 echo $_SESSION['errorDb'];
+                 //$miarr  =  $_SESSION['creado'];
+                 //echo var_dump($miarr);
+                 unset($_SESSION['errorDb']);
              }
              ?>
          </p>
      
-      
 
     
        
@@ -182,6 +180,7 @@ $empleados = $emp->getAllEmpleados();
     </div>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

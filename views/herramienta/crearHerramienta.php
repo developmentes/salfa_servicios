@@ -28,12 +28,10 @@ $empleados = $emp->getAllEmpleados();
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="../asset/css/crearEmpleado.css" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-<body class="bg-body">
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
@@ -80,6 +78,30 @@ $empleados = $emp->getAllEmpleados();
 
 
 
+
+    <p class="red-success">
+        <?php
+
+        if (isset($_SESSION['creado'])) {
+            echo $_SESSION['creado'];
+            //$miarr  =  $_SESSION['creado'];
+            //echo var_dump($miarr);
+            unset($_SESSION['creado']);
+        }
+        ?>
+    </p>
+
+    <p class="red-success">
+        <?php
+
+        if (isset($_SESSION['impresion'])) {
+            //echo $_SESSION['impresion'];
+            $miarr  =  $_SESSION['impresion'];
+            echo var_dump($miarr);
+            unset($_SESSION['impresion']);
+        }
+        ?>
+    </p>
     <p class="error">
         <?php
 
@@ -95,100 +117,47 @@ $empleados = $emp->getAllEmpleados();
 
 
 
-    <p class="error">
-        <?php
-
-        if (isset($_SESSION['errorCargo'])) {
-            echo $_SESSION['errorCargo'];
-            // $miarr  =  $_SESSION['error'];
-            // echo var_dump($miarr);
-            unset($_SESSION['errorCargo']);
-        }
-        ?>
-    </p>
-
-
-
-
-    <p class="error">
-        <?php
-
-        if (isset($_SESSION['errorDb'])) {
-            echo $_SESSION['errorDb'];
-            // $miarr  =  $_SESSION['error'];
-            // echo var_dump($miarr);
-            unset($_SESSION['errorDb']);
-        }
-        ?>
-    </p>
-
-
-
-
-   
-
-
-
-        <form class="form container " action="../controllers/CrearEmpleadoController.php" method="POST">
-
-
-
-        <div class="row mb-4">
+    <section class="container outline-success">
 
 
         <h1>Crear empleado</h1>
-            <!-- <label for="patente">Patente vehiculo</label> -->
-            <div class="form-group col-md-6 ">
-                <input class="form-control  mb-3" id="rut" type="text" name="rut" placeholder="Rut empleado ">
-            </div>
-            <div class="form-group col-md-6">
+
+        <form class="form" action="../../controllers/CrearHerramientaController.php" method="POST">
+
+
+
+            <div class="form-group">
                 <!-- <label for="patente">Patente vehiculo</label> -->
                 <input class="form-control mb-3" id="nombre" type="text" name="nombre" placeholder="Nombre ">
             </div>
-            <div class="form-group col-md-6 ">
+            <!-- <label for="patente">Patente vehiculo</label> -->
+            <div class="form-group">
+                <input class="form-control  mb-3" id="marca" type="text" name="marca" placeholder=" Marca ">
+            </div>
+            <div class="form-group">
                 <!-- <label for="patente">Patente vehiculo</label> -->
-                <input class="form-control mb-3" id="apellido" type="text" name="apellido" placeholder="Apellido ">
+                <input class="form-control mb-3" id="modelo" type="text" name="modelo" placeholder="Modelo ">
             </div>
-            <div class="form-group col-md-6 ">
+            <div class="form-group">
                 <!-- <label for="patente">Patente vehiculo</label> -->
-                <input class="form-control mb-3" id="email" type="text" name="email" placeholder="Email ">
+                <input class="form-control mb-3" id="stock" type="text" name="stock" placeholder="Stock ">
             </div>
-            <div class="form-group col-md-6 ">
+            <div class="form-group">
                 <!-- <label for="patente">Patente vehiculo</label> -->
-                <input class="form-control mb-3" id="telefono" type="text" name="telefono" placeholder="Telefono ">
+                <input class="form-control mb-3" id="descripcion" type="text" name="descripcion" placeholder="Descripcion ">
             </div>
 
 
-
-            <div class="form-group col-md-3">
-                <select name="cargo" class="form-select " aria-label="Default select example">
-                    <option >Seleccione Cargo</option>
-                    <?php foreach ($cargos as $car) { ?>
-
-                        <option value="<?= $car["codigo_cargo_empleado"] ?>"><?= $car["tipo_cargo_empleado"] ?></option>
-                    <?php } ?>
-                </select>
-
-            </div>
-            <div class="col-md-6">
-
-            <button class="btn btn-outline-primary col-md-6">Crear</button>
-            </div>
+            <button>crear</button>
 
 
-          
-            </div>
-                    <img class="logo" src="../asset/img/pngegg.png" alt="">
+
+            <a id="home" href="../../index.html">Home</a>
+
 
         </form>
 
-        
-         
-        
-
-    
-
-
+    </section>
 
 
 

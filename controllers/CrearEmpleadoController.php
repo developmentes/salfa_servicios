@@ -14,10 +14,10 @@ class CrearEmpleadoController
     public $email;
     public $telefono;
     public $cargo;
-    
-  
 
-    
+
+
+
 
 
     public function __construct()
@@ -28,7 +28,6 @@ class CrearEmpleadoController
         $this->email = $_POST['email'];
         $this->telefono = $_POST['telefono'];
         $this->cargo = $_POST['cargo'];
-       
     }
 
     public function registrarUsuario()
@@ -36,19 +35,23 @@ class CrearEmpleadoController
 
         $modelo = new EmpleadoModel();
         session_start();
-        if ($this->rut == "" || $this->nombre == "" || $this->apellido == "" || $this->email == "" || $this->telefono == "" || $this->cargo == "" ) {
+        if (is_string($this->cargo)) {
+            $_SESSION['errorCargo'] = "Debe seleccionar el cargo";
+            header("Location: ../views/crearEmpleado.php");
+        } else if ($this->rut == "" || $this->nombre == "" || $this->apellido == "" || $this->email == "" || $this->telefono == "") {
             $_SESSION['error'] = "Complete la informacion";
-            $_SESSION['impresion'] = $this->rut;
             header("Location: ../views/crearEmpleado.php");
             return;
         }
-        
-        $data =['rut_empleado' => $_POST['rut'],
-                'nombre_empleado' => $_POST['nombre'],
-                'apellido_empleado' => $_POST['apellido'] ,
-                'email_empleado' => $_POST['email'],
-                'telefono_empleado' => $_POST['telefono'],
-                'cargo_empleado' => $_POST['cargo'] ];
+
+        $data = [
+            'rut_empleado' => $_POST['rut'],
+            'nombre_empleado' => $_POST['nombre'],
+            'apellido_empleado' => $_POST['apellido'],
+            'email_empleado' => $_POST['email'],
+            'telefono_empleado' => $_POST['telefono'],
+            'cargo_empleado' => $_POST['cargo']
+        ];
 
 
 
@@ -56,31 +59,15 @@ class CrearEmpleadoController
 
         if ($count == 1) {
 
-            $_SESSION['creado'] =  '<div class="alert alert-success data-dismiss="alert" aria-label="Close" role="alert">
-            <strong>Empleado creado con exito</strong> success.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>';
+            $_SESSION['creado'] = " Creado con exito";
+            header("Location: ../views/listarEmpleados.php");
 
-            //***********  ZONA DE PRUEBAS METODOS EMPLEADO ***//
-
-            //$modelo->actualizarEmpleado(5);
-          
-
-        //***************************************************** */
-
-            $this->rut == "";$this->nombre == "";$this->apellido == ""; $this->email == ""; $this->telefono == "";$this->cargo == "";$this->password == "";
         } else {
-            $_SESSION['impresion'] = $this->telefono;
-            $_SESSION['error'] = "Hubo un error en la base de datos";
+            $_SESSION['errorDb'] = "Hubo un error en la base de datos";
+            header("Location: ../views/crearEmpleado.php");
         }
-
-        header("Location: ../views/listarEmpleados.php");
     }
 }
 
 $obj = new CrearEmpleadoController();
 $obj->registrarUsuario();
-
-
